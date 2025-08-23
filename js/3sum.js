@@ -10,8 +10,6 @@ var threeSum = function (nums) {
     nums = [0, 0, 0];
   }
 
-  console.log(nums);
-
   for (let i = 0; i < nums.length; i++) {
     let x = i;
     let y = i + 1;
