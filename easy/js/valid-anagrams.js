@@ -16,7 +16,6 @@ var isAnagram = function (s, t) {
 
   for (let c of t) {
     const pos = c.charCodeAt() - "a".charCodeAt();
-    console.log({ pos });
 
     arr[pos]--;
     if (arr[pos] < 0) {
