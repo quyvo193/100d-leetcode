@@ -4,29 +4,33 @@
  */
 var threeSum = function (nums) {
   const result = [];
-
-  nums = Array.from(new Set(nums));
-  if (nums.length < 3) {
-    nums = [0, 0, 0];
-  }
+  nums.sort((a, b) => a - b);
 
   for (let i = 0; i < nums.length; i++) {
-    let x = i;
-    let y = i + 1;
-    let z = i + 2;
+    let l = i + 1;
+    let r = nums.length - 1;
 
-    while (y < nums.length - 1) {
-      while (z < nums.length) {
-        if (nums[x] + nums[y] + nums[z] === 0) {
-          result.push([nums[x], nums[y], nums[z]]);
-        }
-        z++;
-      }
-
-      y++;
-      z = y + 1;
+    if (i > 0 && nums[i] === nums[i - 1]) {
+      continue;
     }
 
-    return result;
+    while (nums[i] <= 0 && l < r) {
+      if (nums[i] + nums[l] + nums[r] > 0) {
+        r--;
+      } else if (nums[i] + nums[l] + nums[r] < 0) {
+        l++;
+      } else {
+        result.push([nums[i], nums[l], nums[r]]);
+        l++;
+        while (nums[l] === nums[l - 1] && l < r) {
+          l++;
+        }
+      }
+    }
   }
+  return result;
 };
+
+console.log(
+  threeSum([2, -3, 0, -2, -5, -5, -4, 1, 2, -2, 2, 0, 2, -4, 5, 5, -10])
+);
