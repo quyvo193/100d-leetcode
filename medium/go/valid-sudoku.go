@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func isValidSudoku(board [][]byte) bool {
 	rows := make([]map[byte]bool, 9)
 	cols := make([]map[byte]bool, 9)
@@ -32,8 +30,4 @@ func isValidSudoku(board [][]byte) bool {
 	}
 
 	return true
-}
-
-func main() {
-	fmt.Println((8 / 3) + (3 / 3))
 }
