@@ -1,14 +1,17 @@
 package main
 
-import (
-	"fmt"
-	"strings"
-)
+import "fmt"
 
 func isValidSudoku(board [][]byte) bool {
-	rows := make(map[byte]bool)
-	cols := make(map[byte]bool)
-	squares := make(map[string]bool)
+	rows := make([]map[byte]bool, 9)
+	cols := make([]map[byte]bool, 9)
+	squares := make([]map[byte]bool, 9)
+
+	for i := range 9 {
+		rows[i] = make(map[byte]bool)
+		cols[i] = make(map[byte]bool)
+		squares[i] = make(map[byte]bool)
+	}
 
 	for x, r := range board {
 		for y, c := range r {
@@ -16,15 +19,21 @@ func isValidSudoku(board [][]byte) bool {
 				continue
 			}
 
-			if rows[c] || cols[c] || squares[strings.Join([]string{fmt.Sprint(x % 3), string(y % 3)}, "-")] {
+			squareIndex := x/3*3 + y%3
+
+			if rows[x][c] || cols[y][c] || squares[squareIndex][c] {
 				return false
 			}
 
-			rows[c] = true
-			cols[c] = true
-			squares[strings.Join([]string{string(x % 3), string(y % 3)}, "-")] = true
+			rows[x][c] = true
+			cols[y][c] = true
+			squares[squareIndex][c] = true
 		}
 	}
 
 	return true
+}
+
+func main() {
+	fmt.Println((8 / 3) + (3 / 3))
 }
