@@ -3,41 +3,30 @@ package main
 import "fmt"
 
 func LongestConsecutive(nums []int) int {
-	m := make(map[int]struct{})
+	m := make(map[int]bool)
 	max := 0
 	for i := range len(nums) {
-		m[nums[i]] = struct{}{}
+		m[nums[i]] = true
 	}
 
-	for i := range len(nums) {
-		consecutive := 0
-		x := nums[i]
-		for {
-			_, next := m[x]
-			if !next {
-				break
-			}
-
-			consecutive++
-			delete(m, x)
-			x++
+	for _, num := range nums {
+		if m[num-1] {
+			continue
 		}
 
-		x = nums[i]
-		for {
-			_, next := m[x-1]
-			if !next {
-				break
-			}
+		seq, temp := 1, num+1
 
-			consecutive++
-
-			delete(m, x-1)
-			x--
+		for m[temp] {
+			seq++
+			temp++
 		}
 
-		if consecutive > max {
-			max = consecutive
+		if seq > max {
+			max = seq
+		}
+
+		if max > len(nums)/2 {
+			break
 		}
 	}
 
