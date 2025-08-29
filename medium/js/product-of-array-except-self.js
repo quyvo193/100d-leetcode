@@ -3,32 +3,20 @@
  * @return {number[]}
  */
 var productExceptSelf = function (nums) {
-  let indexZero = [];
+  const n = nums.length;
+  const result = Array.from({ length: n }).fill(1);
 
-  nums.forEach((num, i) => {
-    if (num === 0) indexZero.push(i);
-  });
-
-  if (indexZero.length > 1) {
-    return Array.from({ length: nums.length }).fill(0);
+  for (let i = 1; i < n; i++) {
+    result[i] = result[i - 1] * nums[i - 1];
   }
 
-  if (indexZero.length === 1) {
-    const result = Array.from({ length: nums.length }).fill(0);
-
-    result[indexZero[0]] = nums.reduce((p, num, i) => {
-      if (i === indexZero[0]) {
-        return p;
-      }
-      return p * num;
-    }, 1);
-
-    return result;
+  let prevSuffix = 1;
+  for (let i = n - 2; i >= 0; i--) {
+    prevSuffix *= nums[i + 1];
+    result[i] *= prevSuffix;
   }
 
-  const productOfAll = nums.reduce((p, num) => p * num, 1);
-
-  return nums.map((num) => productOfAll / num);
+  return result;
 };
 
 console.log(productExceptSelf([-1, 1, 0, -3, 3]));
