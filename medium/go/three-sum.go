@@ -11,7 +11,7 @@ func threeSum(nums []int) [][]int {
 	res := [][]int{}
 
 	for i := range len(nums) {
-		if i > 0 && nums[i-1] == nums[i] {
+		if i > 0 && nums[i] == nums[i-1] {
 			continue
 		}
 
@@ -19,17 +19,18 @@ func threeSum(nums []int) [][]int {
 
 		for l < r {
 			sum := nums[i] + nums[l] + nums[r]
-			if sum == 0 {
-				res = append(res, []int{nums[i], nums[l], nums[r]})
-			} else if sum > 0 {
+
+			if sum < 0 {
 				l++
-				for nums[l] == nums[l-1] {
+			} else if sum > 0 {
+				r--
+			} else {
+				res = append(res, []int{nums[i], nums[l], nums[r]})
+				l++
+				for nums[l] == nums[l-1] && l < r {
 					l++
 				}
-			} else {
-				r--
 			}
-
 		}
 	}
 
@@ -37,9 +38,6 @@ func threeSum(nums []int) [][]int {
 }
 
 func main() {
-	a := []int{}
-
-	a = append(a, 5)
-	// r := twoSum([]int{2, 3, 4}, 6)
-	fmt.Printf("R: %v\n", a)
+	r := threeSum([]int{1, -1, -1, 0})
+	fmt.Printf("R: %v\n", r)
 }
