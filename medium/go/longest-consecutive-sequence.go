@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func LongestConsecutive(nums []int) int {
 	m := make(map[int]bool)
 	max := 0
@@ -31,9 +29,4 @@ func LongestConsecutive(nums []int) int {
 	}
 
 	return max
-}
-
-func main() {
-	r := LongestConsecutive([]int{0, 3, 7, 2, 5, 8, 4, 6, 0, 1})
-	fmt.Printf("R: %v\n", r)
 }
