@@ -3,15 +3,10 @@ package main
 import "fmt"
 
 func trap(height []int) int {
-
 	l, r := 0, len(height)-1
 	ml, mr := height[l], height[r]
 	trappedWater := 0
-	for {
-		if r < l {
-			break
-		}
-
+	for r < l {
 		ml = max(height[l], ml)
 		mr = max(height[r], mr)
 
