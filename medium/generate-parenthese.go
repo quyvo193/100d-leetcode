@@ -1,14 +1,31 @@
 package main
 
+import "fmt"
+
 func generateParenthesis(n int) []string {
-	stack := []rune{}
 	res := []string{}
 
-	func(openN, closeN int) {
-		if openN > closeN {
-
+	var dfs func(path string, openN, closeN int)
+	dfs = func(path string, openN, closeN int) {
+		if len(path) == n*2 {
+			res = append(res, path)
+			return
 		}
-	}(0, 0)
 
-	return []string{}
+		if openN < n {
+			dfs(path+"(", openN+1, closeN)
+		}
+
+		if closeN < openN {
+			dfs(path+")", openN, closeN+1)
+		}
+	}
+
+	dfs("", 0, 0)
+
+	return res
+}
+
+func main() {
+	fmt.Println("result: ", generateParenthesis(3))
 }

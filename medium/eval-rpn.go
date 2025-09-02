@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"strconv"
 )
 
@@ -46,8 +45,4 @@ func pop(s *[]int) (val int) {
 	*s = (*s)[:n-1]
 
 	return val
-}
-
-func main() {
-	fmt.Println("result: ", evalRPN([]string{"3", "-4", "+"}))
 }
