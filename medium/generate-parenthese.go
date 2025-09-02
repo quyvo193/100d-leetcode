@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func generateParenthesis(n int) []string {
 	res := []string{}
 
@@ -24,8 +22,4 @@ func generateParenthesis(n int) []string {
 	dfs("", 0, 0)
 
 	return res
-}
-
-func main() {
-	fmt.Println("result: ", generateParenthesis(3))
 }
