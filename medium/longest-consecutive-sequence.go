@@ -1,4 +1,4 @@
-package main
+package medium
 
 func LongestConsecutive(nums []int) int {
 	m := make(map[int]bool)

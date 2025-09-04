@@ -1,10 +1,10 @@
-package main
+package medium
 
 import (
 	"sort"
 )
 
-func threeSum(nums []int) [][]int {
+func ThreeSum(nums []int) [][]int {
 	sort.Ints(nums)
 
 	res := [][]int{}

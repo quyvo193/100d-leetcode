@@ -1,13 +1,11 @@
-package main
-
-import "fmt"
+package medium
 
 type HigherTemp struct {
 	idx int
 	val int
 }
 
-func dailyTemperatures(temperatures []int) []int {
+func DailyTemperatures(temperatures []int) []int {
 	res := make([]int, len(temperatures))
 	stack := []HigherTemp{}
 
@@ -25,8 +23,4 @@ func dailyTemperatures(temperatures []int) []int {
 	}
 
 	return res
-}
-
-func main() {
-	fmt.Println("result: ", dailyTemperatures([]int{73, 74, 75, 71, 69, 72, 76, 73}))
 }

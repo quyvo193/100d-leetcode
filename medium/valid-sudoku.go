@@ -1,6 +1,6 @@
-package main
+package medium
 
-func isValidSudoku(board [][]byte) bool {
+func IsValidSudoku(board [][]byte) bool {
 	rows := make([]map[byte]bool, 9)
 	cols := make([]map[byte]bool, 9)
 	squares := make([]map[byte]bool, 9)

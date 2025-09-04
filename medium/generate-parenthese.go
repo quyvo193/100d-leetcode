@@ -1,6 +1,6 @@
-package main
+package medium
 
-func generateParenthesis(n int) []string {
+func GenerateParenthesis(n int) []string {
 	res := []string{}
 
 	var dfs func(path string, openN, closeN int)

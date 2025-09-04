@@ -1,10 +1,10 @@
-package main
+package medium
 
 import (
 	"strconv"
 )
 
-func evalRPN(tokens []string) int {
+func EvalRPN(tokens []string) int {
 	stack := make([]int, 0)
 
 	for _, t := range tokens {
@@ -12,19 +12,15 @@ func evalRPN(tokens []string) int {
 		case "+":
 			f, s := pop(&stack), pop(&stack)
 			stack = append(stack, s+f)
-			break
 		case "-":
 			f, s := pop(&stack), pop(&stack)
 			stack = append(stack, s-f)
-			break
 		case "*":
 			f, s := pop(&stack), pop(&stack)
 			stack = append(stack, s*f)
-			break
 		case "/":
 			f, s := pop(&stack), pop(&stack)
 			stack = append(stack, s/f)
-			break
 		default:
 			num, _ := strconv.Atoi(t)
 			stack = append(stack, num)

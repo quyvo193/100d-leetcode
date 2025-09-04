@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package easy
 
 // {([])}
 func isValid(s string) bool {
@@ -29,9 +27,4 @@ func isValid(s string) bool {
 	}
 
 	return true
-}
-
-func main() {
-	r := isValid("]")
-	fmt.Printf("R: %v\n", r)
 }

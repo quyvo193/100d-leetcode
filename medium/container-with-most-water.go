@@ -1,6 +1,6 @@
-package main
+package medium
 
-func maxArea(height []int) int {
+func MaxArea(height []int) int {
 	l, r := 0, len(height)-1
 	area := 0
 

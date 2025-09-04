@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package easy
 
 type ListNode struct {
 	Val  int
@@ -12,23 +10,14 @@ func reverseList(head *ListNode) *ListNode {
 		return head
 	}
 
-	// var rlinkedlist *ListNode
+	var rlinkedlist *ListNode
 
 	for head != nil {
 		temp := head.Next
-		// temp.Next = head
-		// head = rlinkedlist
-		fmt.Println("temp val: ", temp.Val)
-		fmt.Println("head val: ", head.Val)
-		head = head.Next
+		head.Next = rlinkedlist
+		rlinkedlist = head
+		head = temp
 	}
 
 	return head
-}
-
-func main() {
-	a := &ListNode{Val: 1, Next: &ListNode{Val: 2, Next: &ListNode{Val: 3, Next: &ListNode{Val: 4}}}}
-
-	reverseList(a)
-
 }

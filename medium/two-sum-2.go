@@ -1,6 +1,6 @@
-package main
+package medium
 
-func twoSum(numbers []int, target int) []int {
+func TwoSum(numbers []int, target int) []int {
 	i, j := 0, len(numbers)-1
 
 	for i < j {
