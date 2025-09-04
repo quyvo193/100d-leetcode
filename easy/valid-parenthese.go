@@ -1,7 +1,7 @@
 package easy
 
 // {([])}
-func isValid(s string) bool {
+func IsValid(s string) bool {
 	stack := make([]rune, 0)
 
 	for _, c := range s {
@@ -22,9 +22,5 @@ func isValid(s string) bool {
 		}
 	}
 
-	if len(stack) > 0 {
-		return false
-	}
-
-	return true
+	return len(stack) == 0
 }

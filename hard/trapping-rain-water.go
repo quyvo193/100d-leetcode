@@ -1,6 +1,6 @@
 package hard
 
-func trap(height []int) int {
+func Trap(height []int) int {
 	l, r := 0, len(height)-1
 	ml, mr := height[l], height[r]
 	trappedWater := 0
