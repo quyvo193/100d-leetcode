@@ -7,27 +7,23 @@ func SearchMatrix(matrix [][]int, target int) bool {
 	}
 
 	l, r := 0, m
-
 	for l < r {
-		m := l + (r-l)/2
+		mid := (l + r) / 2
 
-		if matrix[m][n] == target {
-			return true
-		} else if matrix[m][0] > target {
-			if matrix[m][n] <= target {
-				return search(matrix[m], target)
-			}
-
-			r = m - 1
+		if matrix[mid][n] < target {
+			l = mid + 1
+		} else if matrix[mid][0] > target {
+			r = mid - 1
 		} else {
-			if matrix[m][n] >= target {
-				return search(matrix[m], target)
-			}
-			l = m + 1
+			break
 		}
 	}
 
-	return search(matrix[l], target)
+	if l > r {
+		return false
+	}
+
+	return search(matrix[(l+r)/2], target)
 }
 
 func search(nums []int, target int) bool {
