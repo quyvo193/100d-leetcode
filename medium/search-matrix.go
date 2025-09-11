@@ -1,7 +1,5 @@
 package medium
 
-import "fmt"
-
 func SearchMatrix(matrix [][]int, target int) bool {
 	m, n := len(matrix)-1, len(matrix[0])-1
 	if target < matrix[0][0] || target > matrix[m][n] {
@@ -12,7 +10,6 @@ func SearchMatrix(matrix [][]int, target int) bool {
 
 	for l < r {
 		m := l + (r-l)/2
-		fmt.Println("m", m, l, r)
 
 		if matrix[m][n] == target {
 			return true
@@ -35,7 +32,7 @@ func SearchMatrix(matrix [][]int, target int) bool {
 
 func search(nums []int, target int) bool {
 	l, r := 0, len(nums)-1
-	fmt.Println("nums", nums)
+
 	for l <= r {
 		m := l + (r-l)/2
 		if nums[m] == target {
