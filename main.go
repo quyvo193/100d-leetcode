@@ -6,6 +6,5 @@ import (
 )
 
 func main() {
-
-	fmt.Println("r: ", medium.MinEatingSpeed([]int{30, 11, 23, 4, 20}, 5))
+	fmt.Println("r: ", medium.Search([]int{1, 3}, 3))
 }
