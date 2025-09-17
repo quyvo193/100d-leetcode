@@ -1,18 +1,19 @@
 package medium
 
 func LengthOfLongestSubstring(s string) int {
-	charSet := make(map[byte]bool)
+	mp := make(map[byte]int)
 	l, res := 0, 0
 
 	for r := 0; r < len(s); r++ {
-		for charSet[s[r]] {
-			delete(charSet, s[l])
-			l++
+		if idx, found := mp[s[r]]; found {
+			l = max(idx+1, l)
 		}
-		charSet[s[r]] = true
+		mp[s[r]] = r
 		if r-l+1 > res {
 			res = r - l + 1
 		}
 	}
 	return res
 }
+
+//abcabcbb
