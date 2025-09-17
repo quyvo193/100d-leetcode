@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	fmt.Println("r: ", medium.Search([]int{1, 3}, 3))
+	fmt.Println("r: ", medium.LengthOfLongestSubstring("a"))
 }
