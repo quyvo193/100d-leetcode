@@ -15,5 +15,3 @@ func LengthOfLongestSubstring(s string) int {
 	}
 	return res
 }
-
-//abcabcbb

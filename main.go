@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	fmt.Println("r: ", medium.LengthOfLongestSubstring("a"))
+	fmt.Println("r: ", medium.CheckInclusion("eidbaooo", "eidbaooo"))
 }
