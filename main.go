@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	fmt.Println("r: ", medium.CheckInclusion("eidbaooo", "eidbaooo"))
+	fmt.Println("r: ", medium.CheckInclusion("ab", "eidbaooo"))
 }

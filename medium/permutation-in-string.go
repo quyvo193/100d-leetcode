@@ -1,15 +1,23 @@
 package medium
 
-import "fmt"
-
 func CheckInclusion(s1 string, s2 string) bool {
-	charMap := make(map[byte]int)
+	l, count := 0, [26]int{}
 
 	for i := range s1 {
-		charMap[s1[i]]++
+		count[s1[i]-'a']++
 	}
 
-	fmt.Println(charMap)
+	for r := 0; r < len(s2); r++ {
+		count[s2[r]-'a']--
 
-	return true
+		if count == [26]int{} {
+			return true
+		}
+
+		if r-l+1 == len(s1) {
+			count[s2[l]-97]++
+			l++
+		}
+	}
+	return false
 }
