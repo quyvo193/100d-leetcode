@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"leetcode/medium"
+	"leetcode/easy"
 )
 
 func main() {
-	fmt.Println("r: ", medium.CheckInclusion("ab", "eidbaooo"))
+	fmt.Println("r: ", easy.RemoveDuplicates("abbaca"))
 }
