@@ -5,29 +5,34 @@ type ListNode struct {
 	Next *ListNode
 }
 
-func reverseList(head *ListNode) (*ListNode, int) {
-	var r *ListNode
-	n := 0
+func ReorderList(head *ListNode) {
+	slow, fast := head, head.Next
 
-	for head != nil {
-		n++
-		tmp := head.Next
-		head.Next = r
-		r = head
-		head.Next = tmp
+	for fast != nil && fast.Next != nil {
+		fast = fast.Next.Next
+		slow = slow.Next
 	}
 
-	return r, n
-}
+	// reverse list
+	second := slow.Next
+	slow.Next = nil
+	var rev *ListNode
 
-func ReorderList(head *ListNode) {
-	tmp := head
-	rl, n := reverseList(tmp)
+	for second != nil {
+		tmp := second.Next
+		second.Next = rev
+		rev = second
+		second = tmp
+	}
 
-	for range n / 2 {
-		tmp.Next = head
-		tmp = tmp.Next
-		tmp.Next = rl
-		tmp = tmp.Next
+	// merge list
+
+	first, second := head, rev
+
+	for second != nil {
+		tmp1, tmp2 := first.Next, second.Next
+		first.Next = second
+		second.Next = tmp1
+		first, second = tmp1, tmp2
 	}
 }
