@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	fmt.Println("r: ", medium.RemoveDuplicates("abbaca", 2))
+	fmt.Println("r: ", medium.RemoveDuplicates("deeedbbcccbdaa", 3))
 }
