@@ -1,6 +1,5 @@
-package medium
-
 // medium problem
+package arrayhashing
 
 func LongestConsecutive(nums []int) int {
 	m := make(map[int]bool)

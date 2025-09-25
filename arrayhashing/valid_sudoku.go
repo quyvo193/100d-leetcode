@@ -1,5 +1,5 @@
 // medium problem
-package medium
+package arrayhashing
 
 func IsValidSudoku(board [][]byte) bool {
 	rows := make([]map[byte]bool, 9)
