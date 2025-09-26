@@ -4,7 +4,6 @@ package trees
 
 func RightSideView(root *TreeNode) []int {
 	res := []int{}
-	level := [][]int{}
 
 	var dfs func(node *TreeNode, lvl int)
 	dfs = func(node *TreeNode, lvl int) {
@@ -12,21 +11,15 @@ func RightSideView(root *TreeNode) []int {
 			return
 		}
 
-		if len(level) == lvl {
-			level = append(level, []int{})
+		if len(res) == lvl {
+			res = append(res, node.Val)
 		}
 
-		level[lvl] = append(level[lvl], node.Val)
-
-		dfs(node.Left, lvl+1)
 		dfs(node.Right, lvl+1)
+		dfs(node.Left, lvl+1)
 	}
 
 	dfs(root, 0)
-
-	for _, nodes := range level {
-		res = append(res, nodes[len(nodes)-1])
-	}
 
 	return res
 }
