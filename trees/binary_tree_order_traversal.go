@@ -1,39 +1,25 @@
 package trees
 
 func LevelOrder(root *TreeNode) [][]int {
-	queue := []*TreeNode{}
-	visted := make(map[*TreeNode]bool)
-	res := [][]int{}
+	lvl := [][]int{}
 
-	queue = append(queue, root)
-
-	for len(queue) > 0 {
-		arr := []int{}
-		pop := queue[0]
-		queue = queue[1:]
-
-		visted[pop] = true
-
-		if pop.Left != nil {
-			arr = append(arr, pop.Left.Val)
+	var dfs func(node *TreeNode, depth int)
+	dfs = func(node *TreeNode, depth int) {
+		if node == nil {
+			return
 		}
 
-		if pop.Right != nil {
-			arr = append(arr, pop.Right.Val)
+		if len(lvl) <= depth {
+			lvl = append(lvl, []int{node.Val})
+		} else {
+			lvl[depth] = append(lvl[depth], node.Val)
 		}
 
-		res = append(res, arr)
-
-		if !visted[pop] {
-			if pop.Left != nil {
-				queue = append(queue, pop.Left)
-			}
-
-			if pop.Right != nil {
-				queue = append(queue, pop.Right)
-			}
-		}
+		dfs(node.Left, depth+1)
+		dfs(node.Right, depth+1)
 	}
 
-	return res
+	dfs(root, 0)
+
+	return lvl
 }
