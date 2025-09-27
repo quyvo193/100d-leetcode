@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"leetcode/arrayhashing"
+	"leetcode/slidingwindow"
 )
 
 func main() {
-	fmt.Println("r: ", arrayhashing.TopKFrequent([]int{1, 2, 1, 2, 1, 2, 3, 1, 3, 2}, 2))
+	fmt.Println("r: ", slidingwindow.MaxSlidingWindow([]int{9, 10, 9, -7, -4, -8, 2, -6}, 5))
 }
